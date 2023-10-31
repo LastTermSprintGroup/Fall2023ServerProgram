@@ -1,10 +1,13 @@
 package com.keyin.passenger;
 
+import java.util.List;
 public class PassengerEntity {
     private int passengerID;
     private String firstName;
     private String lastName;
     private int phoneNumber;
+    private int cityId;
+    private List<Integer> aircraftIds;
     //Values to store details
 
     public int getPassengerID() {
