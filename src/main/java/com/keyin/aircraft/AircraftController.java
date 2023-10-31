@@ -1,11 +1,10 @@
 package com.keyin.aircraft;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,51 +12,42 @@ import java.util.Optional;
 @RequestMapping("/aircrafts")
 public class AircraftController {
 
-    // Dummy list to mimic a database. In a real application, you would use a service and repository.
-    private List<Aircraft> aircraftList = new ArrayList<>();
+    @Autowired
+    private AircraftService aircraftService;
 
-    // CREATE a new aircraft
     @PostMapping
     public ResponseEntity<Aircraft> createAircraft(@RequestBody Aircraft aircraft) {
-        aircraftList.add(aircraft);
-        return new ResponseEntity<>(aircraft, HttpStatus.CREATED);
+        Aircraft createdAircraft = aircraftService.createAircraft(aircraft);
+        return new ResponseEntity<>(createdAircraft, HttpStatus.CREATED);
     }
 
-    // READ all aircrafts
     @GetMapping
     public ResponseEntity<List<Aircraft>> getAllAircrafts() {
-        return new ResponseEntity<>(aircraftList, HttpStatus.OK);
+        List<Aircraft> aircrafts = aircraftService.getAllAircrafts();
+        return new ResponseEntity<>(aircrafts, HttpStatus.OK);
     }
 
-    // READ a single aircraft by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Aircraft> getAircraftById(@PathVariable Long id) {
-        Optional<Aircraft> aircraft = aircraftList.stream().filter(a -> a.getID().equals(id)).findFirst();
-        if (aircraft.isPresent()) {
-            return new ResponseEntity<>(aircraft.get(), HttpStatus.OK);
+    public ResponseEntity<Aircraft> getAircraftById(@PathVariable int id) {
+        Optional<Aircraft> aircraft = aircraftService.getAircraftById(id);
+        return aircraft.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Aircraft> updateAircraft(@PathVariable int id, @RequestBody Aircraft updatedAircraft) {
+        Aircraft aircraft = aircraftService.updateAircraft(id, updatedAircraft);
+        if (aircraft != null) {
+            return new ResponseEntity<>(aircraft, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    // UPDATE an aircraft by ID
-    @PutMapping("/{id}")
-    public ResponseEntity<Aircraft> updateAircraft(@PathVariable Long id, @RequestBody Aircraft updatedAircraft) {
-        for (Aircraft aircraft : aircraftList) {
-            if (aircraft.getID().equals(id)) {
-                aircraft.setModel(updatedAircraft.getModel());
-                aircraft.setCapacity(updatedAircraft.getCapacity());
-                return new ResponseEntity<>(aircraft, HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    // DELETE an aircraft by ID
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAircraft(@PathVariable Long id) {
-        if (aircraftList.removeIf(aircraft -> aircraft.getID().equals(id))) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Use NO_CONTENT for successful deletes with no response body
+    public ResponseEntity<Void> deleteAircraft(@PathVariable int id) {
+        boolean isDeleted = aircraftService.deleteAircraft(id);
+        if (isDeleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
