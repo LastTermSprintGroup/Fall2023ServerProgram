@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 public class AirportService {
@@ -41,5 +43,12 @@ public class AirportService {
 
     public boolean deleteAirport(int id) {
         return airportList.removeIf(airport -> airport.getId() == id);
+    }
+
+    public List<Airport> getAirportsByCity(int cityId) {
+        // Filter the list of airports by the cityId
+        return airportList.stream()
+                .filter(airport -> airport.getCityId() == cityId)
+                .collect(Collectors.toList());
     }
 }

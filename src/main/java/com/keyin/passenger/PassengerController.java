@@ -1,5 +1,7 @@
 package com.keyin.passenger;
 
+import com.keyin.aircraft.Aircraft;
+import com.keyin.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +52,16 @@ public class PassengerController {
             super(message);
         }
     }
+
+    @GetMapping("/{passengerId}/aircrafts")
+    public List<Aircraft> getAircraftsByPassenger(@PathVariable int passengerId) {
+        return passengerService.getAircraftsByPassenger(passengerId);
+    }
+
+    @GetMapping("/{passengerId}/airports")
+    public List<Airport> getAirportsByPassenger(@PathVariable int passengerId) {
+        return passengerService.getAirportsByPassenger(passengerId);
+    }
+
 }
 

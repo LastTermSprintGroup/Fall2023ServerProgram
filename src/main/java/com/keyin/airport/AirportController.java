@@ -36,4 +36,11 @@ public class AirportController {
     public void deleteAirport(@PathVariable int airportId) {
         airportService.deleteAirport(airportId);
     }
+
+    @GetMapping("/city/{cityId}")
+    public List<Airport> getAirportsByCity(@PathVariable int cityId) {
+        return airportService.getAirportsByCity(cityId);
+    }
+
+
 }
