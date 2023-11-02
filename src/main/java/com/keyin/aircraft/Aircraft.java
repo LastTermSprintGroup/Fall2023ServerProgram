@@ -6,7 +6,7 @@ public class Aircraft {
 // that represent the ID of an
 // aircraft, the model of the aircraft,
 // and the amount of passengers as capacity
-    private int ID;
+    private int id;
     private String model;
     private int capacity;
     private List<Integer> passengerIds;
@@ -14,18 +14,20 @@ public class Aircraft {
 // Basic aircraft constructor
     public Aircraft() {}
 // Aircraft constructor that assigns all values
-    public Aircraft(int ID, String model, int capacity) {
-        this.ID = ID;
+    public Aircraft(int ID, String model, int capacity, List<Integer> passengerIds, List<Integer> airportIds) {
+        this.id = ID;
         this.model = model;
         this.capacity = capacity;
+        this.passengerIds = passengerIds;
+        this.airportIds = airportIds;
     }
 // Getter for Aircrafts ID
     public int getID() {
-        return ID;
+        return id;
     }
 // Setter for the Aircrafts ID
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 // Getter for the model of the Aircraft
     public String getModel() {

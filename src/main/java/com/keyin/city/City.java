@@ -13,6 +13,13 @@ public class City {
 // Constructor for a city object
     public City() {
     }
+// Constructor taking all instances
+    public City(int id, String name, String state, int population) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
+        this.population = population;
+    }
 // Getter for the cities ID number
     public int getId() {
         return id;
