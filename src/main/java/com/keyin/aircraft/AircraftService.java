@@ -42,9 +42,12 @@ public class AircraftService {
     }
 
     public List<Airport> getAirportsByAircraft(int aircraftId) {
-        // Assuming you have a way to link aircraft to airports, perhaps through a list of airport IDs in the Aircraft model
-        return airportList.stream()
-                .filter(airport -> airport.getAircraftIds().contains(aircraftId))
-                .collect(Collectors.toList());
+        List<Airport> airportsWithAircraft = new ArrayList<>();
+        for (Airport airport : airportList) {
+            if (airport.getAircraftIds() != null && airport.getAircraftIds().contains(aircraftId)) {
+                airportsWithAircraft.add(airport);
+            }
+        }
+        return airportsWithAircraft;
     }
 }

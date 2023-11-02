@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PassengerEntity {
-    private int passengerID;
+    private int id;
     private String firstName;
     private String lastName;
     private int phoneNumber;
@@ -20,7 +20,7 @@ public class PassengerEntity {
 
     // Parameterized constructor
     public PassengerEntity(int passengerID, String firstName, String lastName, int phoneNumber, int cityId) {
-        this.passengerID = passengerID;
+        this.id = passengerID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -33,11 +33,11 @@ public class PassengerEntity {
 
     // Getters and setters
     public int getPassengerID() {
-        return passengerID;
+        return id;
     }
 
     public void setPassengerID(int passengerID) {
-        this.passengerID = passengerID;
+        this.id = passengerID;
     }
 
     public String getFirstName() {

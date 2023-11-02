@@ -1,6 +1,8 @@
 package com.keyin.airport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,9 @@ public class AirportController {
     }
 
     @PostMapping
-    public void createAirport(@RequestBody Airport newAirport) {
-        airportService.createAirport(newAirport);
+    public ResponseEntity<Airport> createAirport(@RequestBody Airport newAirport) {
+        Airport createdAirport = airportService.createAirport(newAirport);
+        return new ResponseEntity<>(createdAirport, HttpStatus.CREATED);
     }
 
     @PutMapping("/{airportId}")

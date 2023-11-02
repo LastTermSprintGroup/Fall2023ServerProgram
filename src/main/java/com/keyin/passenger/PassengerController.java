@@ -17,10 +17,13 @@ public class PassengerController {
     private PassengerService passengerService;
 
     @GetMapping
-    public List<PassengerEntity> getAllPassengers() {
-        return passengerService.getAllPassengers();
+    public ResponseEntity<List<PassengerEntity>> getAllPassengers() {
+        List<PassengerEntity> passengers = passengerService.getAllPassengers();
+        if (passengers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(passengers, HttpStatus.OK);
     }
-
     @GetMapping("/{passengerId}")
     public PassengerEntity getPassenger(@PathVariable int passengerId) {
         return passengerService.getPassengerById(passengerId);
