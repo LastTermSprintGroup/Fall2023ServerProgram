@@ -1,14 +1,16 @@
 package com.keyin.aircraft;
 
+import com.keyin.airport.Airport;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AircraftService {
-
+    private List<Airport> airportList = new ArrayList<>();
     private List<Aircraft> aircraftList = new ArrayList<>();
 
     public Aircraft createAircraft(Aircraft aircraft) {
@@ -37,5 +39,12 @@ public class AircraftService {
 
     public boolean deleteAircraft(int id) {
         return aircraftList.removeIf(aircraft -> aircraft.getID() == id);
+    }
+
+    public List<Airport> getAirportsByAircraft(int aircraftId) {
+        // Assuming you have a way to link aircraft to airports, perhaps through a list of airport IDs in the Aircraft model
+        return airportList.stream()
+                .filter(airport -> airport.getAircraftIds().contains(aircraftId))
+                .collect(Collectors.toList());
     }
 }

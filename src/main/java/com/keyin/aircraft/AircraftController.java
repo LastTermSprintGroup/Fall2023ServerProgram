@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.keyin.airport.Airport;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,5 +52,14 @@ public class AircraftController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/{aircraftId}/airports")
+    public ResponseEntity<List<Airport>> getAirportsByAircraft(@PathVariable int aircraftId) {
+        List<Airport> airports = aircraftService.getAirportsByAircraft(aircraftId);
+        if (airports.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(airports, HttpStatus.OK);
     }
 }
