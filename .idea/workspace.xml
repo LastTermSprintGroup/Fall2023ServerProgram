@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="341ebe87-4eab-4961-aafd-c430102039c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/Aircraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/Aircraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/AircraftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/AircraftController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/AircraftService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/aircraft/AircraftService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/passenger/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/passenger/PassengerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/keyin/passenger/PassengerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/keyin/passenger/PassengerEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +78,7 @@
       <workItem from="1698899223438" duration="31000" />
       <workItem from="1698899261501" duration="69000" />
       <workItem from="1698960768016" duration="8052000" />
+      <workItem from="1699037240740" duration="4199000" />
     </task>
     <servers />
   </component>
