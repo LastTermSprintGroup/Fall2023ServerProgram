@@ -14,8 +14,6 @@ public class PassengerEntity {
 
     // Default constructor
     public PassengerEntity() {
-        this.aircraftIds = new ArrayList<>(); // Initialize the aircraft list
-        this.airportIds = new ArrayList<>(); // Initialize the airport list
     }
 
     // Parameterized constructor
