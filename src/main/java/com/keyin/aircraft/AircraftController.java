@@ -54,9 +54,9 @@ public class AircraftController {
         }
     }
 
-    @GetMapping("/{id}/airports")
-    public ResponseEntity<List<Airport>> getAirportsByAircraft(@PathVariable int id) {
-        List<Airport> airports = aircraftService.getAirportsByAircraft(id);
+    @GetMapping("/{aircraftId}/airports")
+    public ResponseEntity<List<Airport>> getAirportsByAircraft(@PathVariable int aircraftId) {
+        List<Airport> airports = aircraftService.getAirportsByAircraft(aircraftId);
         if (airports.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

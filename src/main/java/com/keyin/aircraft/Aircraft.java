@@ -61,4 +61,13 @@ public class Aircraft {
     public void setAirportIds(List<Integer> airportIds) {
         this.airportIds = airportIds;
     }
+
+    public void addAirportId(Integer airportId) {
+        this.airportIds.add(airportId);
+    }
+
+    public void addPassengerId(Integer passengerId) {
+        this.passengerIds.add(passengerId);
+    }
+
 }
